@@ -22,9 +22,9 @@ SELECTOR
 ################################################################################
 cat <<PRELUDE
 {
-  "description" : "",
-  "name" : "test",
-  "rules" : [
+  "description" : "kgadek/syncthing-relays-allowlist",
+  "name"        : "syncthing-relays-allowlist",
+  "rules"       : [
 PRELUDE
 
 

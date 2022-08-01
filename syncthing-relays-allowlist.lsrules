@@ -1,7 +1,7 @@
 {
-  "description" : "",
-  "name" : "test",
-  "rules" : [
+  "description" : "kgadek/syncthing-relays-allowlist",
+  "name"        : "syncthing-relays-allowlist",
+  "rules"       : [
     {
       "notes"            : "TCP based sync protocol traffic",
       "process"          : "\/Applications\/QSyncthingTray.app\/Contents\/MacOS\/QSyncthingTray",
