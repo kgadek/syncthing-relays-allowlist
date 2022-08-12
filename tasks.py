@@ -25,45 +25,49 @@ def refresh_relays_list(c):
     c.run(f"curl -o '{_RELAYS}' 'https://relays.syncthing.net/endpoint'")
 
 
-def _allow(**kwargs):
+def _allow(d: dict[str, Any]):
     return {
         "process": "/Applications/Syncthing.app/Contents/MacOS/Syncthing",
         "action": "allow",
-    } | kwargs
+    } | d
 
 
 def _rules_sync_traffic():
     protocols = ["tcp", "udp"]
     for protocol, direction in product(protocols, _directions):
         yield _allow(
-            notes=f"{protocol} based sync protocol traffic",
-            direction=direction,
-            protocol=protocol,
-            ports="22000",
-            remote="any",
+            {
+                "notes": f"{protocol} based sync protocol traffic",
+                "direction": direction,
+                "protocol": protocol,
+                "ports": "22000",
+                "remote": "any",
+            }
         )
 
 
 def _rules_local_discovery():
     yield _allow(
-        **{
+        {
             "ports": "1900",
             "remote-addresses": "239.255.255.250",
         }
     )
     for direction in _directions:
         yield _allow(
-            notes="for discovery broadcasts on IPv4 and multicasts on IPv6",
-            direction=direction,
-            protocol="udp",
-            ports="21027",
-            remote="local-net",
+            {
+                "notes": "for discovery broadcasts on IPv4 and multicasts on IPv6",
+                "direction": direction,
+                "protocol": "udp",
+                "ports": "21027",
+                "remote": "local-net",
+            }
         )
 
 
 def _rules_global_discovery():
     yield _allow(
-        **{
+        {
             "notes": "Discovery server",
             "direction": "outgoing",
             "protocol": "tcp",
@@ -78,7 +82,7 @@ def _rules_global_discovery():
 
 def _rules_stun_servers():
     yield _allow(
-        **{
+        {
             "notes": "stun servers :3478, from docs: https://docs.syncthing.net/users/config.html#config-option-options.stunserver",
             "direction": "outgoing",
             "protocol": "udp",
@@ -110,7 +114,7 @@ def _process_relay(relay: dict):
 
 def _rules_relays():
     yield _allow(
-        **{
+        {
             "notes": "Main relay server",
             "direction": "outgoing",
             "protocol": "tcp",
@@ -129,7 +133,7 @@ def _rules_relays():
         ip_list = ", ".join(ip for ip, _port in relay_group)
         for direction in _directions:
             yield _allow(
-                **{
+                {
                     "notes": f"Relay :{port}",
                     "direction": direction,
                     "protocol": "tcp",
