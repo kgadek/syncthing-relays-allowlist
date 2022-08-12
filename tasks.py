@@ -45,6 +45,12 @@ def _rules_sync_traffic():
 
 
 def _rules_local_discovery():
+    yield _allow(
+        **{
+            "ports": "1900",
+            "remote-addresses": "239.255.255.250",
+        }
+    )
     for direction in _directions:
         yield _allow(
             notes="for discovery broadcasts on IPv4 and multicasts on IPv6",
