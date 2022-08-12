@@ -101,7 +101,7 @@ def _rules_relays():
     relays = [(ip, int(port)) for ip, port in relays]
     relays = sorted(relays, key=itemgetter(1))
     for port, relay_group in groupby(relays, key=itemgetter(1)):
-        ip_list = ', '.join(ip for ip, _port in relay_group)
+        ip_list = ", ".join(ip for ip, _port in relay_group)
         for direction in _directions:
             yield _allow(
                 **{
