@@ -94,6 +94,16 @@ def _process_relay(relay: dict):
 
 
 def _rules_relays():
+    yield _allow(
+        **{
+            "notes": "Main relay server",
+            "direction": "outgoing",
+            "protocol": "tcp",
+            "port": "443",
+            "remote-addresses": "relays.syncthing.net",
+        }
+    )
+
     with _RELAYS.open() as fh:
         endpoints = json.load(fh)
 

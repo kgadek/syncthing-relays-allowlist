@@ -89,6 +89,15 @@
     {
       "process": "/Applications/Syncthing.app/Contents/MacOS/Syncthing",
       "action": "allow",
+      "notes": "Main relay server",
+      "direction": "outgoing",
+      "protocol": "tcp",
+      "port": "443",
+      "remote-addresses": "relays.syncthing.net"
+    },
+    {
+      "process": "/Applications/Syncthing.app/Contents/MacOS/Syncthing",
+      "action": "allow",
       "notes": "Relay :53",
       "direction": "incoming",
       "protocol": "tcp",
