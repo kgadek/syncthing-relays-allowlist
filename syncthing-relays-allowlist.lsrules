@@ -105,7 +105,9 @@
       "direction": "outgoing",
       "protocol": "tcp",
       "port": "443",
-      "remote-addresses": "relays.syncthing.net"
+      "remote-domains": [
+        "relays.syncthing.net"
+      ]
     },
     {
       "process": "/Applications/Syncthing.app/Contents/MacOS/Syncthing",

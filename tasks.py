@@ -115,7 +115,7 @@ def _rules_relays():
             "direction": "outgoing",
             "protocol": "tcp",
             "port": "443",
-            "remote-addresses": "relays.syncthing.net",
+            "remote-domains": ["relays.syncthing.net"],
         }
     )
 
