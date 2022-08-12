@@ -69,6 +69,7 @@ def _rules_stun_servers():
             "protocol": "udp",
             "ports": "3478",
             "remote-domains": [
+                "stun.syncthing.com",
                 "stun.callwithus.com",
                 "stun.counterpath.com",
                 "stun.counterpath.net",
