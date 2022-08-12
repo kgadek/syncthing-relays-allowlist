@@ -71,7 +71,8 @@
       "ports": "443",
       "remote-domains": [
         "discovery-v4.syncthing.net",
-        "discovery-v6.syncthing.net"
+        "discovery-v6.syncthing.net",
+        "discovery.syncthing.net"
       ]
     },
     {

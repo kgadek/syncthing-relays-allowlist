@@ -75,6 +75,7 @@ def _rules_global_discovery():
             "remote-domains": [
                 "discovery-v4.syncthing.net",
                 "discovery-v6.syncthing.net",
+                "discovery.syncthing.net",
             ],
         }
     )
