@@ -65,6 +65,18 @@
     {
       "process": "/Applications/Syncthing.app/Contents/MacOS/Syncthing",
       "action": "allow",
+      "notes": "Discovery server",
+      "direction": "outgoing",
+      "protocol": "tcp",
+      "ports": "443",
+      "remote-domains": [
+        "discovery-v4.syncthing.net",
+        "discovery-v6.syncthing.net"
+      ]
+    },
+    {
+      "process": "/Applications/Syncthing.app/Contents/MacOS/Syncthing",
+      "action": "allow",
       "notes": "stun servers :3478, from docs: https://docs.syncthing.net/users/config.html#config-option-options.stunserver",
       "direction": "outgoing",
       "protocol": "udp",

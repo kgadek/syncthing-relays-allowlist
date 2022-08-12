@@ -61,6 +61,21 @@ def _rules_local_discovery():
         )
 
 
+def _rules_global_discovery():
+    yield _allow(
+        **{
+            "notes": "Discovery server",
+            "direction": "outgoing",
+            "protocol": "tcp",
+            "ports": "443",
+            "remote-domains": [
+                "discovery-v4.syncthing.net",
+                "discovery-v6.syncthing.net",
+            ],
+        }
+    )
+
+
 def _rules_stun_servers():
     yield _allow(
         **{
@@ -134,6 +149,7 @@ def generate_rules(c):
             chain(
                 _rules_sync_traffic(),
                 _rules_local_discovery(),
+                _rules_global_discovery(),
                 _rules_stun_servers(),
                 _rules_relays(),
             )
